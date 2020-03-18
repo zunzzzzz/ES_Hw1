@@ -32,7 +32,7 @@ output = []
 def FindRange(station_id) :
    target_data = list(filter(lambda item: item['station_id'] == station_id, data))
    for i in target_data : 
-      if(i['WDSD'] != -99.000 and i['WDSD'] != -99.000) :
+      if(i['WDSD'] != -99.000 and i['WDSD'] != -999.000) :
          list_wdsd.append(i['WDSD'])
    max_wdsd = -10000
    min_wdsd = 10000
