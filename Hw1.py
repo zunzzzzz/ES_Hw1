@@ -28,13 +28,13 @@ with open(cwb_filename) as csvfile:
 # Retrive ten data points from the beginning.
 target_data = list(filter(lambda item: item['station_id'] == 'C0A880', data))
 
-
+output = []
 def FindRange(station_id) :
    target_data = list(filter(lambda item: item['station_id'] == station_id, data))
    for i in target_data : 
       if(i['WDSD'] != -99.000 and i['WDSD'] != -99.000) :
          list_wdsd.append(i['WDSD'])
-   # print(list_wdsd)
+   print(list_wdsd)
    max_wdsd = -10000
    min_wdsd = 10000
    for wdsd_iter in list_wdsd :
@@ -46,8 +46,10 @@ def FindRange(station_id) :
    # print(max_wdsd)
    # print(min_wdsd)
    max_range = max_wdsd - min_wdsd
-   print("['" +  station_id + "'," + str(max_range) + "]", end = '')
-
+   tmp = []
+   tmp.append(station_id)
+   tmp.append(max_range)
+   output.append(tmp)
    # print(max_range)
 
 
@@ -55,15 +57,10 @@ def FindRange(station_id) :
 
 # Part. 4
 #=======================================
-print('[', end = '')
 FindRange('C0A880')
-print(',', end = '')
 FindRange('C0F9A0')
-print(',', end = '')
 FindRange('C0G640')
-print(',', end = '')
 FindRange('C0R190')
-print(',', end = '')
 FindRange('C0X260')
-print(']', end = '')
+print(output)
 #========================================
