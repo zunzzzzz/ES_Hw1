@@ -34,15 +34,9 @@ def FindRange(station_id) :
    for i in target_data : 
       if(i['WDSD'] != -99.000 and i['WDSD'] != -99.000) :
          list_wdsd.append(i['WDSD'])
-   max_wdsd = -10000
-   min_wdsd = 10000
-   for wdsd_iter in list_wdsd :
-      wdsd_iter = float(wdsd_iter)
-      if wdsd_iter > max_wdsd :
-         max_wdsd = wdsd_iter
-      if wdsd_iter < min_wdsd :
-         min_wdsd = wdsd_iter
-   if(max_wdsd == min_wdsd or (max_wdsd == -10000 and min_wdsd == 10000)) :
+   max_wdsd = float(max(list_wdsd))
+   min_wdsd = float(min(list_wdsd))
+   if(max_wdsd == min_wdsd) :
       max_range = 'None'
    else :
       max_range = max_wdsd - min_wdsd
